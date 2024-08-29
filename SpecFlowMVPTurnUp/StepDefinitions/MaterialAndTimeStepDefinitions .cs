@@ -11,14 +11,11 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
     [Binding]
     public sealed class MaterialAndTimeStepDefinitions : BaseTest
     {
-        private IWebDriver driver;
+     
         LoginPage loginPage;
         TMPage tmPage;
         HomePage homePage;
-        public MaterialAndTimeStepDefinitions(IWebDriver driver):base(driver) 
-        {
-            this.driver = driver;
-        }
+
         [Given(@"user login the system with username ""([^""]*)"" password ""([^""]*)"" and navigate to the MaterialTime Page")]
         public void GivenUserLoginTheSystemWithUsernamePasswordAndNavigateToTheMaterialTimePage(string hari, string p1)
         {
@@ -33,29 +30,29 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
             homePage.NavigateToTMPage(driver);
         }
 
-        [Given(@"click the createNew button")]
-        public void GivenClickTheCreateNewButton()
-        {
-            tmPage = new TMPage();
-            tmPage.createNewAction(driver);
-        }
+      
 
-        [When(@"enter the information and click the save button")]
-        public void WhenEnterTheInformationAndClickTheSaveButton(Table table)
+        [Given(@"click the createNew button and enter the information and save")]
+        public void GivenClickTheCreateNewButtonAndEnterTheInformationAndSave(Table table)
         {
             try
             {
+               
+                tmPage = new TMPage();             
                 //Pass the value in parameters
                 foreach (TableRow row in table.Rows)
                 {
+                    tmPage.createNewAction(driver);
                     tmPage.inputNewRecorInfod(driver, row[0], row[1], row[2], row[3]);
                     tmPage.SaveNewRecord(driver);
                 }
             }
-            catch (Exception ex) { 
-            Assert.Fail(ex.Message);
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
             }
         }
+ 
 
         [Then(@"a new record should be created")]
         public void ThenANewRecordShouldBeCreated(Table table)
@@ -69,17 +66,17 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
                     //get the code column value of the last record 
                     IWebElement lastRecord = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
                     Console.WriteLine("**********************" + lastRecord.Text);
-                    /*if (lastRecord.Text != row[0])
+                    if (lastRecord.Text != row[0])
                     {
                         Console.WriteLine(" record " + row[0] + " is created successfully");
-                        Assert.Pass(lastRecord.Text + "is created successfully");
+                        Assert.Fail(lastRecord.Text + "is created successfully");
                     }
                     else
                     {
                         Console.WriteLine(" record " + row[0] + " created failed");
-                        Assert.Fail(lastRecord.Text + "is created failed");
-                    }*/
-                     Assert.That(lastRecord.Text != row[0], "create successfully");
+                        Assert.Pass(lastRecord.Text + "is created failed");
+                    }
+                    // Assert.That(lastRecord.Text == row[0], "create successfully");
                 }
             }
             catch (Exception ex) {

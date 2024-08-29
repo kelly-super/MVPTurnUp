@@ -9,16 +9,12 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
     [Binding]
     public class MaterialAndTimeDeleteStepDefinitions :BaseTest
     {
-        private IWebDriver driver;
+      
         private int record_count;
         LoginPage loginPage;
         TMPage tmPage;
         HomePage homePage;
 
-        public MaterialAndTimeDeleteStepDefinitions(IWebDriver driver):base(driver) 
-        {
-            this.driver = driver;
-        }
 
         [Given(@"user log in the system with username ""([^""]*)"" password ""([^""]*)"" and navigate to the MaterialTime Page")]
         public void GivenUserLogInTheSystemWithUsernamePasswordAndNavigateToTheMaterialTimePage(string hari, string p1)
@@ -52,8 +48,8 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
         [Given(@"confirm to delete")]
         public void GivenConfirmToDelete()
         {
-            IAlert simpleAlert = driver.SwitchTo().Alert();
-            simpleAlert.Accept();
+           // IAlert simpleAlert = driver.SwitchTo().Alert();
+           // simpleAlert.Accept();
         }
 
         [Then(@"verify the  record count should minus (.*)")]

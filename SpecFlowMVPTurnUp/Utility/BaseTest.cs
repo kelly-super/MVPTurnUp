@@ -16,11 +16,8 @@ namespace SpecFlowMVPTurnUp.Utility
 {
     public class BaseTest
     {
-       private IWebDriver driver;
-       
-        public BaseTest(IWebDriver driver) {
-             this.driver = driver;
-        }
+       public static IWebDriver driver;
+
         public IWebDriver GetWebDriver() { 
             
             if( driver==null)
@@ -49,11 +46,12 @@ namespace SpecFlowMVPTurnUp.Utility
                     driver = new ChromeDriver();
                     break;
             }
+            driver.Manage().Window.Maximize();
         }
         public string getApplictionConfig(string key)
         {
             //get applicationConfig.json directory
-            String configPath = System.IO.Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory + "../../../").FullName
+            string configPath = System.IO.Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory + "../../../").FullName
                     + "\\Config\\ApplicationConfig.json";
             IConfiguration _iconfiguration = new ConfigurationBuilder().AddJsonFile(configPath).Build();
             return _iconfiguration[key];

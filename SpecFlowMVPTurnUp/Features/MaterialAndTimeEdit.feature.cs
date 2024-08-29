@@ -130,12 +130,9 @@ this.FeatureBackground();
  testRunner.Given("User select the last record,click edit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
- testRunner.And(string.Format("edit the\'{0}\' \'{1}\' and \'{2}\' and \'{3}\'", typecode, code, description, price), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When(string.Format("edit the\'{0}\' \'{1}\' and \'{2}\' and \'{3}\' and save", typecode, code, description, price), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.Then("click the save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 13
  testRunner.Then(string.Format("verify the \'{0}\' is changed", record), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

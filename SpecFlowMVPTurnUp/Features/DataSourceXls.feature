@@ -2,6 +2,7 @@
 
 A short summary of the feature
 
+@fruit 
 @DataSource:fruit.xlsx
 Scenario: DataSource Example for Excel or CSV
 	Given tha name of the fruit is '<FruitName>'

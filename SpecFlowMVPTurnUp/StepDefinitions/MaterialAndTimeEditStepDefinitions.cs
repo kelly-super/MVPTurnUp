@@ -10,14 +10,11 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
     [Binding]
     public class MaterialAndTimeEditStepDefinitions:BaseTest
     {
-        private IWebDriver driver;
+  
         LoginPage loginPage;
         TMPage tmPage;
         HomePage homePage;
-        public MaterialAndTimeEditStepDefinitions(IWebDriver driver):base(driver)
-        {
-            this.driver = driver;
-        }
+
 
         [Given(@"user logined in the system with username ""([^""]*)"" password ""([^""]*)"" and navigate to the MaterialTime Page")]
         public void GivenUserLoginedInTheSystemWithUsernamePasswordAndNavigateToTheMaterialTimePage(string hari, string p1)
@@ -44,12 +41,14 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
 
         }
 
-        [Given(@"edit the'([^']*)' '([^']*)' and '([^']*)' and '([^']*)'")]
-        public void GivenEditTheAndAnd(string typecode, string code, string description, string price)
+        [When(@"edit the'([^']*)' '([^']*)' and '([^']*)' and '([^']*)' and save")]
+        public void WhenEditTheAndAndAndSave(string typecode, string code, string description, string price)
         {
+          
             try
             {
                 tmPage.inputNewRecorInfod(driver, typecode, code, description, price);
+                tmPage.SaveNewRecord(driver);
             }
             catch (Exception ex)
             {
@@ -57,12 +56,6 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
             }
         }
 
-        [Then(@"click the save button")]
-        public void ThenClickTheSaveButton()
-        {
-
-            tmPage.SaveNewRecord(driver);
-        }
 
          [Then(@"verify the '([^']*)' is changed")]
         public void ThenVerifyTheIsChanged(string p0)

@@ -75,6 +75,7 @@ namespace SpecFlowMVPTurnUp.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("DataSource Example for Excel or CSV")]
+        [NUnit.Framework.CategoryAttribute("fruit")]
         [NUnit.Framework.CategoryAttribute("DataSource:fruit.xlsx")]
         [NUnit.Framework.TestCaseAttribute("Banana", "Yellow", null)]
         [NUnit.Framework.TestCaseAttribute("Apple", "Red", null)]
@@ -83,6 +84,7 @@ namespace SpecFlowMVPTurnUp.Features
         public virtual void DataSourceExampleForExcelOrCSV(string fruitName, string fruitColor, string[] exampleTags)
         {
             string[] @__tags = new string[] {
+                    "fruit",
                     "DataSource:fruit.xlsx"};
             if ((exampleTags != null))
             {
@@ -93,7 +95,7 @@ namespace SpecFlowMVPTurnUp.Features
             argumentsOfScenario.Add("FruitName", fruitName);
             argumentsOfScenario.Add("FruitColor", fruitColor);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DataSource Example for Excel or CSV", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -113,10 +115,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 8
  testRunner.Given(string.Format("tha name of the fruit is \'{0}\'", fruitName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 9
  testRunner.And(string.Format("the fruit is of \'{0}\' in color", fruitColor), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

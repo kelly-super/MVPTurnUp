@@ -5,12 +5,11 @@ Given user login the system with username "hari" password "123123" and navigate 
 
 @regression
 Scenario: Create a new Material and time record 	 
-	Given click the createNew button
-	When enter the information and click the save button
+	Given click the createNew button and enter the information and save
 	| typeCode | code        | description | price |
 	| T        | T2024082207 | T20240822   | $30   |
 	Then a new record should be created
 	| record    |
-	| M20240822 |
+	| T2024082207 |
 	
  

@@ -59,8 +59,8 @@ namespace SpecFlowMVPTurnUp.Hooks
           
             Console.WriteLine("Running before scenario...");
 
-            IWebDriver _container = new BaseTest(driver).GetWebDriver();
-            _container.Manage().Window.Maximize();
+            IWebDriver _container = new BaseTest().GetWebDriver();
+            //_container.Manage().Window.Maximize();
             this._container.RegisterInstanceAs<IWebDriver>(_container);
             _scenario = _feature.CreateNode<Scenario>(scenarioContext.ScenarioInfo.Title);               
             

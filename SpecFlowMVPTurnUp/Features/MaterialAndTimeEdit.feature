@@ -8,8 +8,7 @@ Given user logined in the system with username "hari" password "123123" and navi
 @regression
 Scenario Outline: user edit the last record
 	Given User select the last record,click edit button
-	And edit the'<typecode>' '<code>' and '<description>' and '<price>'
-	Then click the save button
+	When edit the'<typecode>' '<code>' and '<description>' and '<price>' and save
 	Then verify the '<record>' is changed
 
 Examples:

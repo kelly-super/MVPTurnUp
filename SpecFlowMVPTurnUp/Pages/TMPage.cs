@@ -22,7 +22,7 @@ namespace SpecFlowMVPTurnUp.Pages
         public readonly By lastRecordEditButton = By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]");
         public readonly By lastRecordDeleteButton = By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]");
         public readonly By saveButton = By.Id("SaveButton");
-
+        public readonly By item_count = By.XPath("//*[@id=\"tmsGrid\"]/div[4]/span[2]");
 
         public void createNewAction(IWebDriver driver)
         {
@@ -54,9 +54,9 @@ namespace SpecFlowMVPTurnUp.Pages
                 driver.FindElement(descriptionTextbox).SendKeys(desp);
                 driver.FindElement(priceTagOverlap).Click();
                 driver.FindElement(priceTextbox).Clear();
-                // driver.FindElement(priceTagOverlap).Click();
+              //   driver.FindElement(priceTagOverlap).Click();
                 driver.FindElement(priceTextbox).SendKeys(price);
-                // driver.FindElement(saveButton).Click();
+               //  driver.FindElement(saveButton).Click();
            
         }
         public void SaveNewRecord(IWebDriver driver)
@@ -71,9 +71,42 @@ namespace SpecFlowMVPTurnUp.Pages
 
         public void DeleteTheLastRecord(IWebDriver driver) {
             driver.FindElement(lastRecordDeleteButton).Click();
-           /* IAlert simpleAlert = driver.SwitchTo().Alert();
-            simpleAlert.Accept();*/
+            IAlert simpleAlert = driver.SwitchTo().Alert();
+            simpleAlert.Accept();
         }
 
+        public int getItemCount(IWebDriver driver)
+        {
+            int count = 0;
+            IWebElement itemcount = driver.FindElement(item_count);
+            string item_content = itemcount.Text;
+            string sub_item_content = item_content.Substring(item_content.IndexOf("f"));
+            sub_item_content = sub_item_content.Replace("f","").Replace("items","").Replace(" ", "");
+            
+            Console.WriteLine(sub_item_content);
+            count = int.Parse(sub_item_content);
+            return count;
+        }
+
+        public string getTheLastRecordTypeCode(IWebDriver driver)
+        {
+            IWebElement _typeCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[2]"));
+            return _typeCode.Text;
+        }
+        public string getTheLastRecordCode(IWebDriver driver)
+        {
+            IWebElement _code = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return _code.Text;
+        }
+        public string getTheLastRecordDescription(IWebDriver driver)
+        {
+            IWebElement _description = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return _description.Text;
+        }
+        public string getTheLastRecordPrice(IWebDriver driver)
+        {
+            IWebElement _price = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
+            return _price.Text;
+        }
     }
 }

@@ -115,9 +115,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 8
- testRunner.Given("click the createNew button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "typeCode",
                             "code",
@@ -128,14 +125,14 @@ this.FeatureBackground();
                             "T2024082207",
                             "T20240822",
                             "$30"});
-#line 9
- testRunner.When("enter the information and click the save button", ((string)(null)), table1, "When ");
+#line 8
+ testRunner.Given("click the createNew button and enter the information and save", ((string)(null)), table1, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "record"});
                 table2.AddRow(new string[] {
-                            "M20240822"});
-#line 12
+                            "T2024082207"});
+#line 11
  testRunner.Then("a new record should be created", ((string)(null)), table2, "Then ");
 #line hidden
             }

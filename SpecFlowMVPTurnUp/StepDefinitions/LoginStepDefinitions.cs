@@ -9,16 +9,10 @@ namespace SpecFlowMVPTurnUp.StepDefinitions
     [Binding]
     public class LoginStepDefinitions :BaseTest
     {
-        private IWebElement username;
-        private IWebElement password;
-        private IWebDriver driver;
+
 
         LoginPage loginPage;
         HomePage homePage;
-        public LoginStepDefinitions(IWebDriver driver): base(driver)
-        {
-            this.driver = driver;
-        }
 
         [Given(@"the user navigates to the login page")]
         public void GivenTheUserNavigatesToTheLoginPage()
