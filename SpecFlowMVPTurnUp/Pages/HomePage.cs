@@ -10,9 +10,9 @@ namespace SpecFlowMVPTurnUp.Pages
     public class HomePage
     {
    
-        public readonly By administratorTab = By.XPath("/html/body/div[3]/div/div/ul/li[5]/a/span");
-        public readonly By materialAndTimeOption = By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a");
-        public readonly By  helloUser = By.XPath("//body/div[3]/div[1]/div[1]/form[1]/ul[1]/li[1]/a[1]");
+        public readonly By administratorTab = By.XPath("//li[@class='dropdown']//a[text()='Administration ']");
+        public readonly By materialAndTimeOption = By.XPath("//ul[@class='dropdown-menu']//a[text()='Time & Materials']");
+        public readonly By  helloUser = By.XPath("//form[@id='logoutForm']//a[starts-with(text(),'Hello')]");
 
         public void NavigateToTMPage(IWebDriver driver)
         {
@@ -20,7 +20,10 @@ namespace SpecFlowMVPTurnUp.Pages
             driver.FindElement(materialAndTimeOption).Click();
         }
 
-
+        public string getMessage(IWebDriver driver)
+        {
+            return driver.FindElement(helloUser).Text;
+        }
 
     }
 }

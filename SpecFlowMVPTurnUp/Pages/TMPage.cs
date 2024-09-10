@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports.Utils;
+using OpenQA.Selenium;
 using SpecFlowMVPTurnUp.Utility;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,16 @@ namespace SpecFlowMVPTurnUp.Pages
 
         public readonly By cteateNew_button =  By.XPath("//a[contains(text(),'Create New')]");
         public readonly By typeCodeDropdown = By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[1]/div/span[1]/span/span[2]/span");
-        public  By typeCodeOption = By.XPath("//*[@id=\"TypeCode_listbox\"]/li[2]");
+        public  By typeCodeOption = By.XPath("//ul[@id='TypeCode_listbox']//li[text()='Time']");
         public readonly By codeTextbox = By.Id("Code");
         public readonly By descriptionTextbox = By.Id("Description");
         public readonly By priceTagOverlap =By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]");
         public readonly By priceTextbox = By.Id("Price");
         public readonly By goTolastPage = By.XPath("//span[contains(text(),'Go to the last page')]");
-        public readonly By lastRecordEditButton = By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]");
-        public readonly By lastRecordDeleteButton = By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]");
+        public readonly By lastRecordEditButton = By.XPath("//table/tbody/tr[last()]/td/a[contains(@class, 'k-grid-Edit')]");
+        public readonly By lastRecordDeleteButton = By.XPath("//table/tbody/tr[last()]/td/a[contains(@class, 'k-grid-Delete')]");
         public readonly By saveButton = By.Id("SaveButton");
-        public readonly By item_count = By.XPath("//*[@id=\"tmsGrid\"]/div[4]/span[2]");
+        public readonly By item_count = By.XPath("//span[contains(@class,'k-pager-info')]");
 
         public void createNewAction(IWebDriver driver)
         {
@@ -53,8 +54,14 @@ namespace SpecFlowMVPTurnUp.Pages
                 driver.FindElement(descriptionTextbox).Clear();
                 driver.FindElement(descriptionTextbox).SendKeys(desp);
                 driver.FindElement(priceTagOverlap).Click();
+           // driver.FindElement(priceTextbox).Clear();
+            string price_text = driver.FindElement(priceTextbox).Text;
+            if (price_text!=""&&price_text!=null) {
                 driver.FindElement(priceTextbox).Clear();
-              //   driver.FindElement(priceTagOverlap).Click();
+                driver.FindElement(priceTagOverlap).Click();
+            }
+
+                driver.FindElement(priceTextbox).Click();
                 driver.FindElement(priceTextbox).SendKeys(price);
                //  driver.FindElement(saveButton).Click();
            

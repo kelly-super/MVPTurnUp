@@ -14,7 +14,7 @@ namespace SpecFlowMVPTurnUp.Pages
 
        public readonly By username_input = By.Id("UserName");
         public readonly By password_input = By.Id("Password");
-        public readonly By login_button = By.XPath("//*[@id=\"loginForm\"]/form/div[3]/input[1]");
+        public readonly By login_button = By.XPath("//input[@type='submit' and @value='Log in']");
         public readonly By error_li = By.XPath("//*[@id=\"loginForm\"]/form/div[1]/ul/li");
 
         //*[@id="loginForm"]/form/div[1]/ul/li/text()
